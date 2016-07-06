@@ -76,7 +76,7 @@ function processComponentScss() {
 function processComponentCss() {
   return gulp.src([
     join(APP_SRC, '**', '*.css'),
-    '!' + join(APP_SRC, 'assets', '**', '*.css')
+    join(APP_SRC, 'assets', '**', '*.css')
   ])
     .pipe(isProd ? plugins.cached('process-component-css') : plugins.util.noop())
     .pipe(plugins.postcss(processors))
@@ -114,7 +114,8 @@ function getExternalCssStream() {
  * Get an array of filenames referring to all external css stylesheets.
  */
 function getExternalCss() {
-  return DEPENDENCIES.filter(dep => /\.css$/.test(dep.src)).map(dep => dep.src);
+  return DEPENDENCIES.filter(dep => /\.css$/.test(dep.src)).map(dep => dep.src)
+    .concat([join(CSS_SRC, '**', '*.css')]);
 }
 
 /**

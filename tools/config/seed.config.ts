@@ -138,7 +138,7 @@ export class SeedConfig {
    * The folder of the applications css files.
    * @type {string}
    */
-  CSS_SRC = `${this.APP_SRC}/css`;
+  CSS_SRC = `${this.ASSETS_SRC}/styles`;
 
   /**
    * The directory of the applications tools
@@ -191,7 +191,8 @@ export class SeedConfig {
    * The folder for the built CSS files.
    * @type {strings}
    */
-  CSS_DEST = `${this.APP_DEST}/css`;
+  // CSS_DEST = `${this.APP_DEST}/css`;
+  CSS_DEST = `${this.ASSETS_SRC}/styles`;
 
   /**
    * The folder for the built JavaScript files.
@@ -292,7 +293,9 @@ export class SeedConfig {
     packageConfigPaths: [
       `/node_modules/*/package.json`,
       `/node_modules/**/package.json`,
-      `/node_modules/@angular/*/package.json`
+      `/node_modules/@angular/*/package.json`,
+      `!/node_modules/@ngrx/package.json`,
+      `/node_modules/@ngrx/*/package.json`
     ],
     paths: {
       [this.BOOTSTRAP_MODULE]: `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`,
@@ -306,6 +309,7 @@ export class SeedConfig {
       '@angular/router': `node_modules/@angular/router/index.js`,
       'rxjs/*': `node_modules/rxjs/*`,
       'app/*': `/app/*`,
+      '@ngrx/store': `node_modules/@ngrx/store/index.js`,
       '*': `node_modules/*`
     },
     packages: {
@@ -328,11 +332,13 @@ export class SeedConfig {
     defaultJSExtensions: true,
     packageConfigPaths: [
       join(this.PROJECT_ROOT, 'node_modules', '*', 'package.json'),
-      join(this.PROJECT_ROOT, 'node_modules', '@angular', '*', 'package.json')
+      join(this.PROJECT_ROOT, 'node_modules', '@angular', '*', 'package.json'),
+      join(this.PROJECT_ROOT, 'node_modules', '@ngrx', 'store', 'package.json')
     ],
     paths: {
       [`${this.TMP_DIR}/*`]: `${this.TMP_DIR}/*`,
-      '*': 'node_modules/*'
+      '*': 'node_modules/*',
+      '@ngrx/store': `node_modules/@ngrx/store/index.js`
     },
     packages: {
       '@angular/common': {
@@ -368,6 +374,10 @@ export class SeedConfig {
         defaultExtension: 'js'
       },
       'rxjs': {
+        defaultExtension: 'js'
+      },
+      '@ngrx/store': {
+        main: 'index.js',
         defaultExtension: 'js'
       }
     }
