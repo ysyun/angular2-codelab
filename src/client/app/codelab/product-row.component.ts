@@ -6,21 +6,14 @@ import { Product } from './model/product.model';
     template: `
         <tr>
             <td>
-                <span [style.color]="this.color">
-                    {{this.product?.name}}
+                <span [style.color]="product?.stocked ? 'red' : 'black'">
+                    {{ product?.name }}
                 </span>
             </td>
-            <td>{{this.product?.price}}</td>
+            <td>{{ product?.price }}</td>
         </tr>
     `
 })
-export class ProductRow implements OnInit {
-    color: string = 'black';
+export class ProductRow {
     @Input() product: Product;
-
-    ngOnInit() {
-        if(this.product && this.product.stocked) {
-            this.color = 'red';
-        }
-    }
 }
