@@ -45,7 +45,7 @@ import { ProductTable } from './codelab/product-table.component';
       <thead>
         <tr><th>Name</th><th>Price</th></tr>
       </thead>
-      <product-table [categories]="sample"></product-table>
+      <tbody product-table [categories]="sample"></tbody>
     </table>
   `,
   directives: [ProductTable]
