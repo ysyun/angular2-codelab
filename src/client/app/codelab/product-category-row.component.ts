@@ -6,7 +6,7 @@ import { Product } from './model/product.model';
 @Component({
     selector: '[product-category-row]',
     template: `
-        <tr><th colspan="2">{{ category?.name }}</th></tr>
+        <tr><th colspan="2">{{ filterCategory?.name }}</th></tr>
         <tr product-row [product]="product" *ngFor="let product of filterCategory?.products"></tr>
     `,
     directives: [ProductRow]
