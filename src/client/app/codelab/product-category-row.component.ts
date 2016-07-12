@@ -13,7 +13,7 @@ import { Product } from './model/product.model';
 })
 export class ProductCategoryRow {
     // @Input() category: Category;
-
+   
     filterCategory: Category;
     originCategory: Category;
     @Input() set category(value: Category) {

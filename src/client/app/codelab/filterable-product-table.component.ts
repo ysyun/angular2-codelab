@@ -63,7 +63,7 @@ import { ProductService } from './product.service';
 @Component({
     selector: 'filterable-product-table',
     template: `
-       <search-bar (stockChange)="onChangeStock($event)">
+       <search-bar (stockChange)="onChangeStock($event)" (textChange)="onChangeText($event)">
        </search-bar> isChecked: {{ isStockOnly }}
        <table>
           <thead>
@@ -80,6 +80,7 @@ import { ProductService } from './product.service';
 export class FilterableProductTable {
 
     isStockOnly: boolean = false;
+    filterText: string;
     sample: Category[];
 
 	constructor(private _productService: ProductService) {
@@ -88,6 +89,10 @@ export class FilterableProductTable {
 
     onChangeStock(isChecked: boolean) {
         this.isStockOnly = isChecked;
+    }
+
+    onChangeText(filterText: string) {
+        this.filterText = filterText;
     }
 
     setSampleData() {
