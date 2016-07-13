@@ -309,6 +309,9 @@ export class SeedConfig {
       '@angular/router': `node_modules/@angular/router/index.js`,
       'rxjs/*': `node_modules/rxjs/*`,
       'app/*': `/app/*`,
+      'common/*': `/common/*`,
+      'portal/*': `/portal/*`,
+      'sdk/*': `/sdk/*`,
       '@ngrx/store': `node_modules/@ngrx/store/index.js`,
       '*': `node_modules/*`
     },

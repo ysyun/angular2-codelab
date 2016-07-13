@@ -8,6 +8,7 @@ export class CreateTest {
         let source = Observable.create(function (observer: any) {
             observer.next(42);
             observer.complete();
+            //observer.error();
 
             // Note that this is optional, you do not have to return this if you require no cleanup
             return () => { console.log('disposed'); };
