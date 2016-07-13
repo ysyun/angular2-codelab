@@ -7,6 +7,7 @@ import { ProductCategoryRow } from './product-category-row.component';
     template: `
         <div product-category-row 
             [category]="category"
+            [isStockOnly]="isStockOnly"
             *ngFor="let category of categories">
         </div>
     `,
@@ -14,4 +15,5 @@ import { ProductCategoryRow } from './product-category-row.component';
 })
 export class ProductTable {
     @Input() categories: Category[];
+    @Input() isStockOnly: boolean;
 }
