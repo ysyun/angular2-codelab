@@ -43,6 +43,7 @@ export class AppComponent implements OnInit {
         this._createTest.creat01();
         this.methodList = [ 'debounce', 'distinct', 'elementAt', 'filter', 'first', 'first01', 'ignoreElements', 'last',
                             'sample', 'skip', 'take', 'takeLast', 'takeUntil', 'takeWhile' ];
+        this._operator = this._filteringTest;
     }
 
     onChangeOperator( type: string ) {
