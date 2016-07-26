@@ -22,8 +22,8 @@ export class ErrorHandlerTest implements Operator {
 
     throw02( logs:string[] ) {
         logs.push( '<div>throw() Map and flattens numbers to the sequence a, b, c, but throw an error for 13. </br></div>' );
-        var interval = Observable.interval(1000);
-        var result = interval.mergeMap(x =>
+        let interval = Observable.interval(1000);
+        let result = interval.mergeMap(x =>
                                         x === 13 ?
                                         Observable.throw('Thirteens are bad!') :
                                         Observable.of('a', 'b', 'c')
@@ -33,11 +33,12 @@ export class ErrorHandlerTest implements Operator {
 
     retry( logs:string[] ) {
         logs.push( '<div>retry() </br></div>' );
-        var count = 0;
+        let count = 0;
 
-        var source = Observable.interval(1000)
+        let source = Observable.interval(1000)
             .mergeMap(function () {
-                if (++count < 2) {//retry 수치보다 작아야 함.
+                logs.push( 'retry call count: ' + count );
+                if (++count < 3) {//retry 수치보다 작아야 함. error 수치 5부터
                     return Observable.throw(new Error('oops!'));
                 }
                 return Promise.resolve(11);
@@ -45,7 +46,7 @@ export class ErrorHandlerTest implements Operator {
             .retry(3)//count 수치보다 retry 수치가 커야 에러가 발생하지 않음.
             .take(1);
 
-        var subscription = source.subscribe(
+        let subscription = source.subscribe(
             function ( x ) {
                 logs.push( 'Next: ' + x );
             },

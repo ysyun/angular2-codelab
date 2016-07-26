@@ -148,6 +148,7 @@ export class FilteringTest implements Operator {
     takeUntil( logs:string[] ) {
         logs.push( '<div>takeUntil() </br></div>' );
         let interval = Observable.interval( 1000 );
+        //interval.subscribe( x => logs.push( 'interval: ' + x.toString() ) );
         let clicks = Observable.fromEvent( document, 'click' );
         let result = interval.takeUntil( clicks );
         result.subscribe( x => logs.push( 'Result: ' + x.toString() ) );
@@ -156,7 +157,8 @@ export class FilteringTest implements Operator {
     takeWhile( logs:string[] ) {
         logs.push( '<div>takeWhile() </br></div>' );
         let clicks = Observable.fromEvent(document, 'click');
-        let result = clicks.takeWhile( ev => ev.clientX > 200 );
+        let result = clicks.takeWhile( ev => 
+        ev.clientX > 200 );
         result.subscribe( x => logs.push( 'Result: ' + x.toString() ) );
     }
 
